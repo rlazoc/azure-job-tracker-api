@@ -2,10 +2,10 @@
 
 require('dotenv').config();
 const express = require('express');
-const { Client } = require('@notionhq/client'); // destruct Client object from @notionhq/client ({Client: Class, otherProp: value})
+const { Client } = require('@notionhq/client');
 const cors = require('cors');
 
-const app = express(); // this is the server
+const app = express();
 const port = process.env.PORT || 8080;
 
 /// NOTION ///
@@ -36,7 +36,7 @@ app.get('/applications', async (req, res) => {
                 date: page.properties['Date Applied'].date?.start
             };
         });
-        res.json(applications); // clean output of job applications
+        res.json(applications); // clean output
     } catch (error) {
         console.error('Error fetching from Notion:', error);
         res.status(500).json({ error: 'Failed to fetch data from Notion.' });
